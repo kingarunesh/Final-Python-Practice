@@ -1,42 +1,16 @@
-import os
+a = [1, 2, [3, [4], [5, 6]], [7]]
 
-clear = lambda: os.system("cls")
-clear()
 
-print("🙏 Sita Ram 🙏")
+total = 0
 
-print()
-
-print("Welcome to Python-Calculator.")
-
-def add(n1, n2):
-    return n1 + n2
-
-def sub(n1, n2):
-    return n1 - n2
-
-def mul(n1, n2):
-    return n1 * n2
-
-def divide(n1, n2):
-    return n1 / n2
-
-operations = {
-    "+": add,
-    "-": sub,
-    "*": mul,
-    "/": divide
-}
-
-first_number = float(input("What's the first number?: "))
-
-for i in operations:
-    print(i)
-
-operation = input("Pick an operations: ")
-second_number = float(input("What's the next number?: "))
-
-result = operations[f"{operations}"]
-# print(result(n1=first_number, n2=second_number))
+def fun(data):
+    global total
+    for i in range(len(data)):
+        if type(data[i]) != list:
+            total += data[i]
+        else:
+            fun(data=data[i])
+    return total
+            
+result = fun(data=a)
 print(result)
-
