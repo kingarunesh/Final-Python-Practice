@@ -13,10 +13,22 @@ screen.bgcolor("black")
 screen.tracer(0)
 
 
+#!          snake class
 snake = Snake()
 
 
+#!          keyboard listen
+screen.listen()
+screen.onkey(fun=snake.up, key="Up")
+screen.onkey(fun=snake.down, key="Down")
+screen.onkey(fun=snake.left, key="Left")
+screen.onkey(fun=snake.right, key="Right")
+
+
+
 #NOTE :             turtle
+
+
 
 game_is_on = True
 while game_is_on:
