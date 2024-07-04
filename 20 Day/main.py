@@ -30,8 +30,15 @@ game_is_on = True
 while game_is_on:
     screen.update()
     time.sleep(0.1)
-    for seg in segements:
-        seg.forward(10)
+    
+    # for seg in segements:
+    #     seg.forward(10)
+    
+    for seg_num in range(len(segements) - 1, 0, -1):
+        new_x = segements[seg_num - 1].xcor()
+        new_y = segements[seg_num - 1].ycor()
+        segements[seg_num].goto(x=new_x, y=new_y)
+    segements[0].forward(20)
 
 
 
