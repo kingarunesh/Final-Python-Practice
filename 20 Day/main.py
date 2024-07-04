@@ -61,10 +61,8 @@ while game_is_on:
         scoreboard.game_over()
     
     #!      detect snake tail touch
-    for segment in snake.segements:
-        if segment == snake.head:
-            pass
-        elif snake.head.distance(segment) < 10:
+    for segment in snake.segements[1:]:
+        if snake.head.distance(segment) < 10:
             game_is_on = False
             scoreboard.game_over()
 
