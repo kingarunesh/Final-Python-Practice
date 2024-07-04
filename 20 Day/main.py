@@ -3,6 +3,7 @@ import time
 
 from snake import Snake
 from food import Food
+from scoreboard import ScoreBoard
 
 
 #NOTE :             screen
@@ -20,6 +21,10 @@ snake = Snake()
 #!          food
 food = Food()
 
+#!          score board
+scoreboard = ScoreBoard()
+
+
 
 #!          keyboard listen
 screen.listen()
@@ -34,6 +39,8 @@ screen.onkey(fun=snake.right, key="Right")
 
 
 
+
+
 game_is_on = True
 while game_is_on:
     screen.update()
@@ -45,6 +52,7 @@ while game_is_on:
     #!      detect collision with food
     if snake.head.distance(food) < 15:
         food.refresh()
+        scoreboard.increment_score()
 
 
 screen.exitonclick()
