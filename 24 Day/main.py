@@ -1,51 +1,34 @@
-from turtle import Screen
-from snake import Snake
-from food import Food
-from scoreboard import Scoreboard
-import time
+#SECTION :      Old Method
 
-screen = Screen()
-screen.setup(width=600, height=600)
-screen.bgcolor("black")
-screen.title("My Snake Game")
-screen.tracer(0)
-
-snake = Snake()
-food = Food()
-scoreboard = Scoreboard()
-
-screen.listen()
-screen.onkey(snake.up, "Up")
-screen.onkey(snake.down, "Down")
-screen.onkey(snake.left, "Left")
-screen.onkey(snake.right, "Right")
-
-game_is_on = True
-while game_is_on:
-    screen.update()
-    time.sleep(0.15)
-    snake.move()
-
-    #Detect collision with food.
-    if snake.head.distance(food) < 15:
-        food.refresh()
-        snake.extend()
-        scoreboard.increase_score()
-
-    #Detect collision with wall.
-    if snake.head.xcor() > 280 or snake.head.xcor() < -280 or snake.head.ycor() > 280 or snake.head.ycor() < -280:
-        scoreboard.game_reset()
-        snake.reset()
-
-    #Detect collision with tail.
-    for segment in snake.segments:
-        if segment == snake.head:
-            pass
-        elif snake.head.distance(segment) < 10:
-            scoreboard.game_reset()
-            snake.reset()
+# file = open("first.txt")
+# print(file.read())
+# file.close()
 
 
 
+#SECTION :      new method
 
-screen.exitonclick()
+#NOTE :         Read File
+with open("first.txt", mode="r") as file:
+    print(file.read())
+
+
+#NOTE :         Write File
+with open("first.txt", mode="w") as file:
+    file.write("First Text.")
+
+#!      file not exit, creating auto new file
+with open("a.txt", mode="w") as file:
+    file.write("New File created...")
+
+
+#NOTE :         Append Text
+data = ["second", "third", "fourth", "fivth"]
+
+with open("first.txt", mode="a") as file:
+    for text in data:
+        file.write(f"\n{text} Text.")
+
+#!      file not exit, creating auto new file
+with open("b.txt", mode="a") as file:
+    file.write("New File created...")
